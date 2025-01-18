@@ -1,0 +1,47 @@
+export const langConst = {
+  eng: {
+    search: "Search games",
+    playLater: "Play Later",
+    replay: "Replay",
+    finished: "Finished",
+    signUp: "Sign Up",
+    signIn: "Sign In",
+    signOut: "Sign Out",
+    explore: "Explore Games...",
+    filter: "Filter",
+    sort: "Sort",
+    filteredGames: "Filtered Games",
+    gptDisclaim:
+      "Prompt GameGPT to help him curate some free games following your query.",
+  },
+  hin: {
+    search: "गेम तलाश करें",
+    playLater: "बाद में खेलें",
+    replay: "दुबारा खेलें",
+    finished: "खेल समाप्त",
+    signUp: "साइन अप करें",
+    signIn: "प्रवेश करें",
+    signOut: "प्रस्थान करें",
+    explore: "गेम अन्वेषण करें ...",
+    filter: "फ़िल्टर",
+    sort: "क्रमबद्ध करें",
+    filteredGames: "फ़िल्टर किए गए गेम",
+    gptDisclaim:
+      "आपकी क्वेरी के अनुसार कुछ निःशुल्क गेम चुनने में मदद करने के लिए GameGPT को संकेत दें",
+  },
+  ben: {
+    search: "গেম অনুসন্ধান করুন",
+    playLater: "পরে খেলুন",
+    replay: "পুনরায় খেলুন",
+    finished: "খেলা সমাপ্ত",
+    signUp: "সাইন আপ করুন",
+    signIn: "প্রবেশ করুন",
+    signOut: "প্রস্থান করুন",
+    explore: "এখানে গেম অন্বেষণ করুন ...",
+    filter: "ফিল্টার",
+    sort: "গেম সাজান",
+    filteredGames: "ফিল্টার করা গেম",
+    gptDisclaim:
+      "আপনার ক্যোয়ারী অনুসরণ করে কিছু ফ্রি গেম কিউরেট করতে সাহায্য করার জন্য GameGPT-কে অনুরোধ করুন",
+  },
+};
