@@ -13,6 +13,7 @@ export const langConst = {
     filteredGames: "Filtered Games",
     gptDisclaim:
       "Prompt GameGPT to help him curate some free games following your query.",
+    gptBoxText: "Click on any game on the left panel.",
   },
   hin: {
     search: "गेम तलाश करें",
@@ -28,6 +29,7 @@ export const langConst = {
     filteredGames: "फ़िल्टर किए गए गेम",
     gptDisclaim:
       "आपकी क्वेरी के अनुसार कुछ निःशुल्क गेम चुनने में मदद करने के लिए GameGPT को संकेत दें",
+    gptBoxText: "बायें पैनल पर किसी भी गेम पर क्लिक करें।",
   },
   ben: {
     search: "গেম অনুসন্ধান করুন",
@@ -43,5 +45,6 @@ export const langConst = {
     filteredGames: "ফিল্টার করা গেম",
     gptDisclaim:
       "আপনার ক্যোয়ারী অনুসরণ করে কিছু ফ্রি গেম কিউরেট করতে সাহায্য করার জন্য GameGPT-কে অনুরোধ করুন",
+    gptBoxText: "বাম প্যানেলে যেকোনো গেমে ক্লিক করুন।",
   },
 };

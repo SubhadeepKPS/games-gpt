@@ -61,33 +61,9 @@ const SortPanel = (gameInfo) => {
     });
     dispatch(addGameInfo(sortedGames));
     dispatch(toggleSortAllGames());
-    // if (sortSlice.sortAllGames === false) {
-    //   const sortedGames = [...gameData].sort((a, b) => {
-    //     return a[sortParamFromSortAccordion] < b[sortParamFromSortAccordion]
-    //       ? -1
-    //       : 1;
-    //   });
-    //   dispatch(addGameInfo(sortedGames));
-    //   dispatch(toggleSortAllGames());
-    // } else {
-    //   dispatch(addGameInfo(allGames.current));
-    //   dispatch(toggleSortAllGames());
-    // }
   };
 
   useEffect(() => {
-    // if (sortSlice.sortAllGames === false) {
-    //   const sortedGames = [...gameData].sort((a, b) => {
-    //     return a[sortParamFromSortAccordion] < b[sortParamFromSortAccordion]
-    //       ? -1
-    //       : 1;
-    //   });
-    //   dispatch(addGameInfo(sortedGames));
-    //   dispatch(toggleSortAllGames());
-    // } else {
-    //   dispatch(addGameInfo(allGames.current));
-    //   dispatch(toggleSortAllGames());
-    // }
     if (gameData && gameData.length > 0 && !allGames.current) {
       allGames.current = [...gameData]; // Copy to avoid mutating state
     }
@@ -100,7 +76,7 @@ const SortPanel = (gameInfo) => {
   // });
 
   return (
-    <div className="flex flex-row lg:flex lg:flex-col justify-between bg-slate-900 text-gray-400 border-2 border-gray-300 lg:h-screen">
+    <div className="flex flex-row mr-4 lg:flex lg:flex-col justify-between mt-4 pb-20 bg-slate-900 rounded-2xl text-gray-400 border-2 border-gray-400 lg:h-screen">
       <div>
         <div className="flex justify-between w-full px-5 py-1 border-b-2 border-gray-400">
           <div className="">
@@ -112,23 +88,35 @@ const SortPanel = (gameInfo) => {
             onClick={handleFilterButton}
             className="py-1 font-bold text-xl pr-2"
           >
-            <TbFilterCog className="text-red-500 hover:text-amber-400 hover:scale-110" />
+            <div className="text-red-500 hover:text-amber-400 bg-slate-600 rounded-md p-1 hover:scale-110">
+              <TbFilterCog />
+            </div>
           </button>
         </div>
         <div>
           <FilterAccordion accordionInfo={accordionInformation} />
         </div>
       </div>
-      <div className="border-2 border-slate-400">
-        <div className="flex justify-between py-1 border-2 border-slate-400">
+      <div className="border-2 border-slate-400 rounded-xl mx-1 py-2">
+        <div className="flex justify-between py-1">
           <h4 className="font-bold text-sm px-4">{langConst[language].sort}</h4>
           <div className="flex px-6">
-            <button onClick={handleOpenAccordion}>
-              {accordionOpen ? <FaAngleUp /> : <FaAngleDown />}
+            <button
+              className="w-6 h-6 bg-slate-600 rounded-md mx-3 text-red-500 hover:text-amber-400 hover:scale-110"
+              onClick={handleOpenAccordion}
+            >
+              {accordionOpen ? (
+                <FaAngleUp className="ml-1" />
+              ) : (
+                <FaAngleDown className="ml-1" />
+              )}
             </button>
 
-            <button onClick={handleSortButton}>
-              <RiSortAlphabetAsc className="ml-6 py-1 font-bold text-red-500 text-2xl hover:text-amber-400 hover:scale-110" />
+            <button
+              onClick={handleSortButton}
+              className="w-6 h-6 bg-slate-600 rounded-md hover:scale-110"
+            >
+              <RiSortAlphabetAsc className=" py-1 font-bold text-red-500 text-2xl hover:text-amber-400" />
             </button>
           </div>
         </div>
@@ -138,13 +126,6 @@ const SortPanel = (gameInfo) => {
           </div>
         )}
       </div>
-
-      <Link
-        to="/gameGPT"
-        className="bg-lime-500 mb-16 ml-3 w-11/12 text-center font-bold text-slate-950"
-      >
-        GameGPT
-      </Link>
     </div>
   );
 };

@@ -20,7 +20,7 @@ const sanitizeGptResponse = (rawResponse) => {
     if (!jsonMatch) throw new Error("No valid JSON found in the response.");
 
     const parsedJson = JSON.parse(jsonMatch[0]); // Parse the JSON
-    console.log("Parsed JSON:", parsedJson);
+    // console.log("Parsed JSON:", parsedJson);
 
     return parsedJson;
   } catch (error) {

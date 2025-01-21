@@ -15,16 +15,20 @@ const SortAccordion = ({ getSortParam }) => {
 
   return (
     <div>
-      <div className="border-l-2 border-slate-400">
+      <div className="border-l-2 border-t-2 border-b-2 border-slate-500 ml-4 rounded-l-2xl hover:cursor-pointer">
         {sortCategory.map((categoryName) => {
           return (
-            <div key={categoryName} className="flex justify-between mx-12 my-2">
-              <div>
-                <h5 className="text-sm">{categoryName}</h5>
+            <div
+              key={categoryName}
+              // onClick={}
+              className="group flex justify-between mx-12 my-2"
+            >
+              <div className="text-sm group-hover:scale-110">
+                <h5 className="">{categoryName}</h5>
               </div>
               <button
                 onClick={handleSelectSortParam(categoryName.toLowerCase())}
-                className="text-lg text-red-500 hover:text-amber-400"
+                className="text-lg text-red-500"
               >
                 {categoryName?.toLowerCase() === sortParam?.toLowerCase() ? (
                   <IoCheckmarkCircleSharp
@@ -37,7 +41,7 @@ const SortAccordion = ({ getSortParam }) => {
                       setSortParam(categoryName);
                       getSortParam(categoryName);
                     }}
-                    className="mt-1 text-sm pb-0.5 text-red-500 hover:text-amber-300"
+                    className="mt-1 text-sm pb-0.5 text-red-500 group-hover:text-amber-300"
                   />
                 )}
               </button>

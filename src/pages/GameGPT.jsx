@@ -3,6 +3,7 @@ import SearchBox from "../components/SearchBox";
 import openai from "../utils/openAI";
 import { debounce } from "lodash";
 import { developerQueryText1, developerQueryText2 } from "../utils/constants";
+import useRAGpipeline from "../hooks/useRAGpipeline";
 
 import { useDispatch, useSelector } from "react-redux";
 import { alterPage } from "../utils/store/pageSlice";
@@ -14,6 +15,7 @@ const GameGPT = () => {
   const [userQuery, setUserQuery] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [gptResult, setGptResult] = useState(null);
+  const ragPipeline = useRAGpipeline();
   let callCount = useRef(0);
   const gamesDatabase = useSelector((store) => store.games);
   const gameMetadata =
@@ -26,7 +28,7 @@ const GameGPT = () => {
 
   const handleInputValue = (inputValue) => {
     setUserQuery(inputValue.current.value);
-    console.log("userQuery: ", userQuery);
+    // console.log("userQuery: ", userQuery);
   };
   // console.log(gptQueryText);
 
@@ -37,7 +39,7 @@ const GameGPT = () => {
     while (retries > 0) {
       try {
         callCount.current++;
-        console.log("callCount: ", callCount);
+        // console.log("callCount: ", callCount);
 
         const completion = await openai.chat.completions.create({
           model: "gpt-4o-mini-2024-07-18",
@@ -53,7 +55,7 @@ const GameGPT = () => {
           ],
         });
 
-        console.log(completion.choices[0].message.content);
+        // console.log(completion.choices[0].message.content);
         const verifiedJson = sanitizeGptResponse(
           completion.choices[0].message.content
         );
@@ -82,7 +84,7 @@ const GameGPT = () => {
 
   useEffect(() => {
     dispatch(alterPage({ page: "GameGPT" }));
-    console.log("gptResult: ", gptResult);
+    // console.log("gptResult: ", gptResult);
   }, [gptResult]);
 
   return (

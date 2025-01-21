@@ -11,7 +11,7 @@ const GptThumbnailPanel = ({ games }) => {
   // console.log("gameList: ", gameList);
 
   const handleButtonClick = (game) => {
-    console.log("dispatchGame: ", game);
+    // console.log("dispatchGame: ", game);
 
     // const gameSerial = JSON.parse(JSON.stringify(game));
     dispatch(loadGameOnPage(game));
@@ -41,12 +41,13 @@ const GptInformationBoard = ({ games }) => {
   const gameOnPage = useSelector(
     (store) => store.gptResponseSelection.gameOnPage
   );
+  const language = useSelector((store) => store.config.language);
   // console.log("gameOnPage: ", gameOnPage);
   // console.log(games);
   const { story, theme, technicalDetails, pros, cons, reviews, match } =
     gameOnPage || {};
   // .developer, freetogame_profile_url, game_url, .genre, id, .platform, publisher, release_date, short_description, thumbnail, title
-  console.log(gameOnPage);
+  // console.log(gameOnPage);
 
   return gameOnPage ? (
     <div>
@@ -105,7 +106,7 @@ const GptInformationBoard = ({ games }) => {
   ) : (
     <div className="mx-32 my-40">
       <div className="font-bold text-4xl text-red-500">
-        Click on any game on the left panel.
+        {langConst[language].gptBoxText}
       </div>
     </div>
   );
@@ -117,7 +118,7 @@ const GptResultContainer = ({ gptResult, loading }) => {
   const language = useSelector((store) => store.config.language);
   const gptResponse = gptResult?.games;
   const gamesData = useSelector((store) => store.games);
-  console.log("Loading: ", loading);
+  // console.log("Loading: ", loading);
 
   useGameData(gameInStore);
   // console.log("allgam: ", gamesData);

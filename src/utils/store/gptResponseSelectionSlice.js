@@ -8,8 +8,7 @@ const gptResponseSelectionSlice = createSlice({
   },
   reducers: {
     loadGameOnPage: (state, action) => {
-      console.log("gamePayload: ", action.payload);
-
+      // console.log("gamePayload: ", action.payload);
       state.gameOnPage = action.payload;
     },
     loadDetailOnPage: (state, action) => {

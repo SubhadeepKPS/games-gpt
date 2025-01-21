@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const accordionSlice = createSlice({
   name: "accordionInfo",
   initialState: {
-    accordionNames: ["Genre", "Platform", "Developer"],
+    accordionNames: ["Genre", "Platform"],
     openAccordionName: "Genre",
     openAccordionValues: {
       genre: [
@@ -23,7 +23,6 @@ const accordionSlice = createSlice({
         "sports",
       ],
       platform: ["PC (Windows)", "Web Browser"],
-      developer: ["Tencent"],
     },
   },
   reducers: {

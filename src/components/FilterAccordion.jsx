@@ -8,10 +8,7 @@ import {
   closeAccordion,
   updateOpenAccordionName,
 } from "../utils/store/accordionSlice";
-import {
-  addFilterParam,
-  removeFilterParam,
-} from "../utils/store/filterParamSlice";
+import { updateFilterParam } from "../utils/store/filterParamSlice";
 
 const AccordionBars = (value) => {
   const val = value.name;
@@ -21,31 +18,25 @@ const AccordionBars = (value) => {
   // console.log("FilterParams: ", filterParams);
 
   const handleSelectFilterParam = (param) => {
-    dispatch(addFilterParam(param.toLowerCase()));
-  };
-  const handleRemoveFilterParam = (param) => {
-    dispatch(removeFilterParam(param.toLowerCase()));
+    dispatch(updateFilterParam(param.toLowerCase()));
   };
 
   return (
-    <div className="flex justify-between py-2 ml-8 pl-4 mx-14 border-l-2 border-gray-400">
-      <div className="text-xs">
+    <div
+      onClick={() => handleSelectFilterParam(val)}
+      className="group flex justify-between py-2 ml-4 pl-4 mx-14 hover:cursor-pointer"
+    >
+      <div className="text-xs group-hover:scale-110">
         <h4>{val.charAt(0).toUpperCase() + val.slice(1)}</h4>
       </div>
       {filterParams.includes(val.toLowerCase()) ? (
-        <button
-          onClick={() => handleRemoveFilterParam(val)}
-          className="text-lg -mr-4 text-amber-400"
-        >
+        <div className="text-lg -mr-4 text-amber-400">
           <IoCheckmarkCircleSharp className="pt-0.5 pl-0.5" />
-        </button>
+        </div>
       ) : (
-        <button
-          onClick={() => handleSelectFilterParam(val)}
-          className="mt-1 -mr-4 text-sm"
-        >
-          <FaRegCircle className="pb-0.5 text-red-500 hover:text-amber-300" />
-        </button>
+        <div className="mt-1 -mr-4 text-sm">
+          <FaRegCircle className="pb-0.5 text-red-500 group-hover:text-amber-300" />
+        </div>
       )}
     </div>
   );
@@ -57,7 +48,7 @@ const FilterAccordion = (accordionInfo) => {
 
   const { accordionNames, openAccordionName, openAccordionValues } =
     accordionInfo.accordionInfo;
-  // console.log("Acc Names: ", accordionNames);
+  console.log("Acc Names: ", accordionNames);
   // console.log("Open Acc Name: ", typeof openAccordionName);
   // console.log("Open Acc Values: ", openAccordionValues);
 
@@ -78,35 +69,34 @@ const FilterAccordion = (accordionInfo) => {
               {openAccordionName === name ? (
                 <button
                   onClick={() => handleCloseAccordion(name)}
-                  className="w-5 h-5 pr-8"
+                  className="w-5 h-5 mt-2 bg-slate-700 rounded-md"
                 >
-                  <FaAngleUp className="mx-1 text-sm mt-2 text-red-500 hover:text-amber-400 hover:scale-125" />
+                  <FaAngleUp className="mx-1 text-sm text-red-500 hover:text-amber-400 hover:scale-125" />
                 </button>
               ) : (
                 <button
                   onClick={() => handleOpenAccordion(name)}
-                  className="w-5 h-5 pr-8"
+                  className="w-5 h-5 bg-slate-700 rounded-md px-1 mt-2"
                 >
-                  <FaAngleDown className="mx-1 mt-2 text-sm text-red-500 hover:text-amber-400 hover:scale-125" />
+                  <FaAngleDown className="text-sm text-red-500 hover:text-amber-400 hover:scale-125" />
                 </button>
               )}
             </div>
-            <div className="max-h-64 overflow-y-scroll border-2 border-slate-500">
+            <div className="max-h-64 overflow-y-scroll mt-3 border-2 ml-6 rounded-xl border-slate-500">
               {typeof openAccordionName === "string" &&
                 openAccordionName.toLowerCase() === name.toLowerCase() &&
                 openAccordionValues &&
                 (name.toLowerCase() === "genre"
                   ? openAccordionValues.genre.map((value) => {
                       // console.log("val: ", value);
-                      return <AccordionBars key={value} name={value} />;
+                      return (
+                        <div key={value} className="">
+                          <AccordionBars name={value} />
+                        </div>
+                      );
                     })
                   : name.toLowerCase() === "platform"
                   ? openAccordionValues.platform.map((value) => {
-                      // console.log("val: ", value);
-                      return <AccordionBars key={value} name={value} />;
-                    })
-                  : name.toLowerCase() === "developer"
-                  ? openAccordionValues.developer.map((value) => {
                       // console.log("val: ", value);
                       return <AccordionBars key={value} name={value} />;
                     })

@@ -1,4 +1,5 @@
 import appLogo from "../assets/appLogo.png";
+import { Link } from "react-router-dom";
 import { langConst } from "../utils/langConstants";
 import { AiFillInteraction } from "react-icons/ai";
 import { BsFillCalendarCheckFill } from "react-icons/bs";
@@ -22,7 +23,7 @@ const Header = () => {
         <img src={appLogo} alt="VideoGptLogo" className="rounded-full" />
         <h1 className="font-extrabold text-3xl text-red-500">GameGPT</h1>
       </div>
-      <div className="flex -z-40 lg:flex lg:z-0 ">
+      {/* <div className="flex -z-40 lg:flex lg:z-0 ">
         <button className="flex flex-col justify-center items-center lg:mx-12 text-red-500 hover:text-amber-400">
           <IoIosPlayCircle className="text-xl" />
           <h3 className="text-xs font-bold">
@@ -39,8 +40,14 @@ const Header = () => {
             {langConst[language].finished}
           </h3>
         </button>
-      </div>
+      </div> */}
       <div>
+        <Link
+          to="/gameGPT"
+          className="bg-lime-500 font-bold text-slate-950 px-10 py-1 rounded-tr-full mx-10"
+        >
+          GameGPT
+        </Link>
         <select
           onChange={(e) => handleLanguageChange(e)}
           className="w-24 h-8 py-1 px-3 mr-8 mt-2 bg-slate-600 rounded-xl border-2 border-red-500 text-slate-200 text-xs font-bold outline-none cursor-pointer"

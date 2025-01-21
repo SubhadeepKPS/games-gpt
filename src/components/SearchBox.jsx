@@ -17,6 +17,11 @@ const SearchBox = ({ onInputChange, onButtonClick, loading }) => {
   const handleClick = () => {
     onButtonClick();
   };
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      onButtonClick();
+    }
+  };
 
   return (
     <div className="flex justify-center w-full">
@@ -37,6 +42,7 @@ const SearchBox = ({ onInputChange, onButtonClick, loading }) => {
             ref={ref}
             placeholder={langConst[language].search}
             onChange={handleInputChange}
+            onKeyDown={handleKeyPress}
             className="w-10/12 h-10 bg-slate-900 rounded-l-xl px-6 border-t-2 border-l-2 border-b-2 text-sm text-amber-200 font-bold outline-none group-hover:border-red-500 group-focus:border-red-400"
           ></input>
           <button
