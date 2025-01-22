@@ -18,14 +18,14 @@ const GameListContainer = ({ games }) => {
 
   // console.log(gameData);
   return (
-    <div className="flex h-screen w-full pb-28 rounded-2xl">
+    <div className="flex h-screen w-full pb-60 rounded-2xl">
       {showGame && <OpenGame />}
 
       <div>
         <div className="bg-black rounded-2xl mx-4 mt-4 text-xl text-red-500 font-bold py-2 px-8">
           <h4>{langConst[language].explore}</h4>
         </div>
-        <div className="h-screen flex justify-center items-center flex-wrap rounded-2xl pt-6 mt-3 mx-4 bg-slate-900 overflow-y-scroll">
+        <div className="h-screen flex justify-center items-center flex-wrap rounded-2xl pt-6 mt-3 pb-52 mx-4 bg-slate-900 overflow-y-scroll">
           {gameData &&
             gameData.length > 0 &&
             gameData.map(

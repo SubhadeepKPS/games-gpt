@@ -149,9 +149,9 @@ const GptResultContainer = ({ gptResult, loading }) => {
 
   return (
     <div className="flex justify-around">
-      <div className="w-11/12 h-screen bg-slate-900 mt-12 rounded-2xl text-slate-300">
+      <div className="w-11/12 h-screen bg-slate-900 mt-12 rounded-2xl text-slate-300 border-2 border-slate-500">
         {!gptResponseGames && !loading && (
-          <div className="flex justify-center mt-56 text-4xl font-bold px-28">
+          <div className="flex justify-center mt-56 text-4xl text-slate-500 font-bold px-28">
             <div className="text-center">{langConst[language].gptDisclaim}</div>
           </div>
         )}

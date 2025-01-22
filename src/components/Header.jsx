@@ -9,6 +9,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { alterLanguage } from "../utils/store/configSlice";
+import gameGptLogo from "../assets/gameGptLogo.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,11 @@ const Header = () => {
     dispatch(alterLanguage(e.target.value));
   };
   return (
-    <div className="flex justify-between w-screen bg-slate-900 border-b-2 border-slate-400">
-      <div className="flex w-11 h-10 lg:w-14 lg:h-auto rounded-full">
-        <img src={appLogo} alt="VideoGptLogo" className="rounded-full" />
-        <h1 className="font-extrabold text-3xl text-red-500">GameGPT</h1>
+    <div className="flex justify-between w-screen bg-black border-b-2 border-slate-400">
+      <div className="flex w-11 h-10 lg:w-14 lg:h-auto rounded-full border-l-2 border-amber-400">
+        <img src={gameGptLogo} alt="VideoGptLogo" className="ml-4 mr-2" />
+        <h1 className="font-extrabold text-4xl text-amber-400 mt-1">Games</h1>
+        <h1 className="font-extrabold text-4xl text-red-500 mt-1">GPT</h1>
       </div>
       {/* <div className="flex -z-40 lg:flex lg:z-0 ">
         <button className="flex flex-col justify-center items-center lg:mx-12 text-red-500 hover:text-amber-400">
