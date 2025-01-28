@@ -1,16 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FilteredGameCard from "./FilteredGameCard";
 import { langConst } from "../utils/langConstants";
-import { loadShowGame } from "../utils/store/gameCartSlice";
 
-const FilteredGameListContainer = () => {
-  const dispatch = useDispatch();
+const FilteredGameListContainer = ({ sendGameToGameListContainer }) => {
   const filteredGames = useSelector((store) => store.filteredGameCard);
-  // console.log("FilteredGamesFinal: ", filteredGames);
   const language = useSelector((store) => store.config.language);
 
-  const handleFilteredCardButtonClick = (game) => {
-    dispatch(loadShowGame(game));
+  const handleOpenGameModal = (game) => {
+    sendGameToGameListContainer(game);
   };
 
   return (
@@ -22,13 +19,10 @@ const FilteredGameListContainer = () => {
             {langConst[language].filteredGames}
           </h3>
         </div>
-        <div className="flex flex-wrap h-screen pb-28 justify-evenly overflow-y-scroll">
+        <div className="flex flex-1 flex-wrap h-full pt-7 pb-8 justify-evenly overflow-y-scroll">
           {filteredGames && filteredGames.length > 0 ? (
             filteredGames.map((game) => (
-              <button
-                key={game?.id}
-                onClick={() => handleFilteredCardButtonClick(game)}
-              >
+              <button key={game?.id} onClick={() => handleOpenGameModal(game)}>
                 <FilteredGameCard info={game} />
               </button>
             ))

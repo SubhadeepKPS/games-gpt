@@ -3,8 +3,7 @@ import SearchBox from "../components/SearchBox";
 import openai from "../utils/openAI";
 import { debounce } from "lodash";
 import { developerQueryText1, developerQueryText2 } from "../utils/constants";
-import useRAGpipeline from "../hooks/useRAGpipeline";
-
+// import useRAGpipeline from "../hooks/useRAGpipeline";
 import { useDispatch, useSelector } from "react-redux";
 import { alterPage } from "../utils/store/pageSlice";
 import sanitizeGptResponse from "../hooks/sanitizeGptResponse";
@@ -15,7 +14,7 @@ const GameGPT = () => {
   const [userQuery, setUserQuery] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [gptResult, setGptResult] = useState(null);
-  const ragPipeline = useRAGpipeline();
+  // const ragPipeline = useRAGpipeline();
   let callCount = useRef(0);
   const gamesDatabase = useSelector((store) => store.games);
   const gameMetadata =

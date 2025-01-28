@@ -9,7 +9,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { alterLanguage } from "../utils/store/configSlice";
-import gameGptLogo from "../assets/gameGptLogo.png";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <div className="flex justify-between w-screen bg-black border-b-2 border-slate-400">
       <div className="flex w-11 h-10 lg:w-14 lg:h-auto rounded-full border-l-2 border-amber-400">
-        <img src={gameGptLogo} alt="VideoGptLogo" className="ml-4 mr-2" />
+        <img src={logo} alt="VideoGptLogo" className="ml-4 mr-2" />
         <h1 className="font-extrabold text-4xl text-amber-400 mt-1">Games</h1>
         <h1 className="font-extrabold text-4xl text-red-500 mt-1">GPT</h1>
       </div>

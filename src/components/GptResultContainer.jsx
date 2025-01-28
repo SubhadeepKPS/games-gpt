@@ -18,8 +18,8 @@ const GptThumbnailPanel = ({ games }) => {
   };
 
   return (
-    <div>
-      <div className="h-5/6 overflow-scroll">
+    <div className="pb-56">
+      <div className="h-5/6 overflow-scroll pb-56">
         {gameList.map(
           (game) =>
             game.match && (
@@ -65,8 +65,10 @@ const GptInformationBoard = ({ games }) => {
           <h4 className="text-lg font-bold text-red-500 bg-slate-200 px-3 py-1 my-4 mx-1 rounded-2xl">
             {match?.platform}
           </h4>
-          <button className="text-lg font-bold text-slate-200 bg-red-500 px-3 py-1 my-4 mx-1 rounded-2xl hover:bg-amber-400">
-            PLAY Now
+          <button className="text-lg font-bold text-slate-200 bg-red-500 px-4 py-1 my-4 mx-4 rounded-2xl hover:bg-amber-400">
+            <a href={match?.game_url} target="_blank">
+              Play Now
+            </a>
           </button>
         </div>
 
@@ -149,7 +151,7 @@ const GptResultContainer = ({ gptResult, loading }) => {
 
   return (
     <div className="flex justify-around">
-      <div className="w-11/12 h-screen bg-slate-900 mt-12 rounded-2xl text-slate-300 border-2 border-slate-500">
+      <div className="w-11/12 h-screen bg-slate-900 mt-8 rounded-2xl text-slate-300 border-2 border-slate-500">
         {!gptResponseGames && !loading && (
           <div className="flex justify-center mt-56 text-4xl text-slate-500 font-bold px-28">
             <div className="text-center">{langConst[language].gptDisclaim}</div>

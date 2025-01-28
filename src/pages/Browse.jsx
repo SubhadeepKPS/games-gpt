@@ -10,6 +10,7 @@ import { addGameInfo } from "../utils/store/gameDataSlice";
 
 const Browse = () => {
   const dispatch = useDispatch();
+  const [games, setGames] = useState(null);
 
   const [userQuery, setUserQuery] = useState();
   const [gameInStore, setGameInStore] = useState(false);
@@ -25,7 +26,8 @@ const Browse = () => {
       game?.title?.toLowerCase()?.includes(userQuery.toLowerCase())
     );
     console.log("SearchResult: ", searchResult);
-    dispatch(addGameInfo(searchResult));
+    // dispatch(addGameInfo(searchResult));
+    setGames(searchResult);
   };
 
   useEffect(() => {
@@ -37,6 +39,7 @@ const Browse = () => {
     if (gameData === null) {
       setGameInStore(false);
     }
+    setGames(gameData);
   }, [gameData, gameInStore]);
 
   return gameData && gameData.length ? (
@@ -50,10 +53,10 @@ const Browse = () => {
             />
           </div>
           <div className="">
-            <GameListContainer games={gameData} />
+            <GameListContainer games={games} />
           </div>
         </div>
-        <div className="w-full lg:w-2/12">
+        <div className="">
           <SortPanel gameInfo={gameData} />
         </div>
       </div>

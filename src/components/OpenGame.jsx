@@ -2,15 +2,8 @@ import { IoCloseCircle } from "react-icons/io5";
 import { MdBuildCircle } from "react-icons/md";
 import { GiPlatform } from "react-icons/gi";
 import { HiCalendarDateRange } from "react-icons/hi2";
-import { useDispatch, useSelector } from "react-redux";
-import { unloadShowGame } from "../utils/store/gameCartSlice";
 
-const OpenGame = () => {
-  // const [isOpen, setIsOpen] = useState(false); // State to control modal visibility
-  const openGame = useSelector((store) => store.gameCart.openGame);
-  const dispatch = useDispatch();
-
-  // Fallback to prevent destructuring issues
+const OpenGame = ({ game, closeGameModal }) => {
   const {
     thumbnail,
     title = "Unknown Title",
@@ -21,11 +14,13 @@ const OpenGame = () => {
     game_url,
     publisher,
     release_date,
-  } = openGame || {}; // Fallback if openGame is undefined or null
+  } = game || {}; // Fallback if openGame is undefined or null
 
   // const openModal = () => setIsOpen(true);
   const handleCloseModal = () => {
-    dispatch(unloadShowGame());
+    // dispatch(unloadShowGame());
+    closeGameModal();
+    // console.log(closeGameModal);
   };
 
   return (
@@ -52,10 +47,10 @@ const OpenGame = () => {
                   {developer}
                 </h4>
                 <h4 className="flex text-md font-bold text-red-500 bg-slate-200 px-3 py-1 my-4 rounded-2xl">
-                  <MdBuildCircle /> {genre}
+                  <MdBuildCircle className="mr-2 mt-0.5 text-xl" /> {genre}
                 </h4>
                 <h4 className="flex text-md font-bold text-red-500 bg-slate-200 px-3 py-1 my-4 rounded-2xl">
-                  <GiPlatform />
+                  <GiPlatform className="mr-2 mt-0.5 text-xl" />
                   {platform}
                 </h4>
               </div>
@@ -63,17 +58,21 @@ const OpenGame = () => {
             <div>
               <div className="mx-14 w-full">
                 <div className="text-slate-300 w-96 min-h-44">
-                  <h5 className="text-amber-400 text-xl">Short Description</h5>
+                  <h5 className="text-amber-400 text-xl font-semibold mb-2">
+                    Short Description
+                  </h5>
                   <p>{short_description}</p>
                 </div>
                 <div>
-                  <h5 className="text-amber-400 text-xl">Release Date</h5>
-                  <p className="text-red-500">
-                    <HiCalendarDateRange />
+                  <h5 className="text-amber-400 text-xl font-semibold mb-2">
+                    Release Date
+                  </h5>
+                  <p className="flex text-red-500">
+                    <HiCalendarDateRange className="text-xl mr-2 mt-0.5" />
                     {release_date}
                   </p>
                 </div>
-                <button className="text-lg font-bold text-slate-200 bg-red-500 px-3 py-1 my-4 rounded-2xl hover:bg-amber-400">
+                <button className="text-lg font-bold text-slate-200 bg-red-500 px-3 py-1 mt-24 my-4 rounded-2xl hover:bg-amber-400 hover:text-black hover:border-2 border-slate-200">
                   <a href={game_url} target="_blank">
                     Play Now
                   </a>

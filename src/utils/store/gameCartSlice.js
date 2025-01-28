@@ -6,7 +6,6 @@ const gameCartSlice = createSlice({
     playLater: [],
     replay: [],
     finished: [],
-    openGame: null,
   },
   reducers: {
     addToPlayLater: (state, action) => {
@@ -27,19 +26,9 @@ const gameCartSlice = createSlice({
     removeFromFinished: (state) => {
       state.includes();
     },
-    loadShowGame: (state, action) => {
-      state.openGame = action.payload;
-    },
-    unloadShowGame: (state) => {
-      state.openGame = null;
-    },
   },
 });
 
-export const {
-  addGameInPlayLater,
-  removeGameFromPlayLater,
-  loadShowGame,
-  unloadShowGame,
-} = gameCartSlice.actions;
+export const { addGameInPlayLater, removeGameFromPlayLater } =
+  gameCartSlice.actions;
 export default gameCartSlice.reducer;
