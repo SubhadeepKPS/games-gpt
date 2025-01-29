@@ -95,7 +95,7 @@ const GameGPT = () => {
           loading={isLoading}
         />
       </div>
-      <div className="">
+      <div className="h-full">
         <GptResultContainer gptResult={gptResult} loading={isLoading} />
       </div>
     </div>

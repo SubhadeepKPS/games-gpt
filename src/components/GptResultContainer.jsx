@@ -18,8 +18,8 @@ const GptThumbnailPanel = ({ games }) => {
   };
 
   return (
-    <div className="pb-56">
-      <div className="h-5/6 overflow-scroll pb-56">
+    <div className="">
+      <div className="h-5/6 overflow-scroll">
         {gameList.map(
           (game) =>
             game.match && (
@@ -65,7 +65,7 @@ const GptInformationBoard = ({ games }) => {
           <h4 className="text-lg font-bold text-red-500 bg-slate-200 px-3 py-1 my-4 mx-1 rounded-2xl">
             {match?.platform}
           </h4>
-          <button className="text-lg font-bold text-slate-200 bg-red-500 px-4 py-1 my-4 mx-4 rounded-2xl hover:bg-amber-400">
+          <button className="text-lg font-bold text-slate-200 bg-red-500 px-4 py-1 my-4 mx-4 rounded-2xl hover:bg-amber-400 hover:text-black">
             <a href={match?.game_url} target="_blank">
               Play Now
             </a>
@@ -132,6 +132,10 @@ const GptResultContainer = ({ gptResult, loading }) => {
       setGameInStore(true);
     }
 
+    if (loading) {
+      setGptResponseGames(null);
+    }
+
     if (gptResponse !== undefined) {
       const gptFilteredGames = gptResponse.map((gptGame) => {
         const found =
@@ -147,26 +151,27 @@ const GptResultContainer = ({ gptResult, loading }) => {
       // console.log("gptFilteredGames: ", gptFilteredGames);
       setGptResponseGames(gptFilteredGames);
     }
-  }, [gamesData, gptResponse]);
+  }, [gamesData, gptResponse, loading]);
 
   return (
-    <div className="flex justify-around">
-      <div className="w-11/12 h-screen bg-slate-900 mt-8 rounded-2xl text-slate-300 border-2 border-slate-500">
+    <div className="flex justify-around h-5/6">
+      <div className="w-11/12 bg-slate-900 mt-8 rounded-2xl text-slate-300 border-2 border-slate-500">
         {!gptResponseGames && !loading && (
           <div className="flex justify-center mt-56 text-4xl text-slate-500 font-bold px-28">
             <div className="text-center">{langConst[language].gptDisclaim}</div>
           </div>
         )}
-        {loading && (
+        {loading ? (
           <div className="flex justify-center items-center mt-20">
             <GptResultLoader />
           </div>
-        )}
-        {gptResponseGames && (
-          <div className="flex">
-            <GptThumbnailPanel games={gptResponseGames} />
-            <GptInformationBoard games={gptResponseGames} />
-          </div>
+        ) : (
+          gptResponseGames && (
+            <div className="flex">
+              <GptThumbnailPanel games={gptResponseGames} />
+              <GptInformationBoard games={gptResponseGames} />
+            </div>
+          )
         )}
       </div>
     </div>

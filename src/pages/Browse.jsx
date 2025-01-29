@@ -43,7 +43,7 @@ const Browse = () => {
   }, [gameData, gameInStore]);
 
   return gameData && gameData.length ? (
-    <div className="lg:fixed bg-slate-700">
+    <div className="lg:fixed bg-slate-700 w-screen">
       <div className="flex flex-col-reverse lg:flex lg:flex-row lg:justify-between">
         <div className="w-10/12">
           <div className="py-3">
@@ -52,7 +52,7 @@ const Browse = () => {
               onSearchButtonClick={handleSearch}
             />
           </div>
-          <div className="">
+          <div className="w-full">
             <GameListContainer games={games} />
           </div>
         </div>

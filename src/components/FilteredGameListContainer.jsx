@@ -13,7 +13,7 @@ const FilteredGameListContainer = ({ sendGameToGameListContainer }) => {
   return (
     filteredGames &&
     filteredGames.length > 0 && (
-      <div className="w-96 rounded-2xl">
+      <div className="w-96 rounded-2xl mx-2">
         <div className="bg-black rounded-2xl mr-4">
           <h3 className="mx-9 my-4 py-2 rounded-lg font-bold text-xl text-red-500">
             {langConst[language].filteredGames}
